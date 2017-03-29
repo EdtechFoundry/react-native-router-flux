@@ -41,7 +41,7 @@
     "react-addons-pure-render-mixin": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-native": "^0.42.0",
-    "react-native-experimental-navigation": "0.26.x",
+    "react-native-experimental-navigation": "https://github.com/EdtechFoundry/react-native-experimental-navigation.git#0.0.1",
     "react-native-tabs": "git://github.com/EdtechFoundry/react-native-tabs.git#c709af985dc51ef0732b1b2aee362c4231ecdeb1",
     "react-static-container": "1.0.1"
   },
