@@ -180,7 +180,6 @@ const propTypes = {
   getTitle: PropTypes.func,
   titleWrapperStyle: Text.propTypes.style,
   titleStyle: Text.propTypes.style,
-  titleOpacity: PropTypes.number,
   titleProps: PropTypes.any,
   position: PropTypes.object,
   navigationBarStyle: View.propTypes.style,
@@ -198,7 +197,6 @@ const contextTypes = {
 const defaultProps = {
   drawerImage: _drawerImage,
   backButtonImage: _backButtonImage,
-  titleOpacity: 1,
 };
 
 class NavBar extends React.Component {
