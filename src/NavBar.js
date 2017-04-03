@@ -180,7 +180,6 @@ const propTypes = {
   getTitle: PropTypes.func,
   titleWrapperStyle: Text.propTypes.style,
   titleStyle: Text.propTypes.style,
-  titleOpacity: PropTypes.number,
   titleProps: PropTypes.any,
   position: PropTypes.object,
   navigationBarStyle: View.propTypes.style,
@@ -198,7 +197,6 @@ const contextTypes = {
 const defaultProps = {
   drawerImage: _drawerImage,
   backButtonImage: _backButtonImage,
-  titleOpacity: 1,
 };
 
 class NavBar extends React.Component {
@@ -483,14 +481,10 @@ class NavBar extends React.Component {
             this.props.navigationState.titleStyle,
             childState.titleStyle,
             {
-              opacity: this.props.position.interpolate({
-                inputRange: [index - 1, index, index + 1],
-                outputRange: [0, this.props.titleOpacity, 0],
-              }),
               transform: [{
                 translateX: this.props.position.interpolate({
                   inputRange: [index - 1, index + 1],
-                  outputRange: [200, -200],
+                  outputRange: [300, -300],
                 }),
               }],
             },
