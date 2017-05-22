@@ -10,7 +10,9 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require react-native-mock/mock",
     "test:watch": "npm run test -- --watch",
-    "eslint": "eslint index.js src/ test/; exit 0;"
+    "eslint": "eslint index.js src/ test/; exit 0;",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "react-native",
@@ -43,7 +45,8 @@
     "react-native": "^0.42.0",
     "react-native-experimental-navigation": "https://github.com/EdtechFoundry/react-native-experimental-navigation.git#0.0.1",
     "react-native-tabs": "git://github.com/EdtechFoundry/react-native-tabs.git#c709af985dc51ef0732b1b2aee362c4231ecdeb1",
-    "react-static-container": "1.0.1"
+    "react-static-container": "1.0.1",
+    "snyk": "^1.30.1"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
@@ -70,5 +73,6 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "snyk": true
 }
