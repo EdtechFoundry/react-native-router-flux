@@ -23,6 +23,7 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Platform,
