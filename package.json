@@ -37,7 +37,7 @@
   ],
   "dependencies": {
     "lodash.isequal": "^4.5.0",
-    "react-native-experimental-navigation": "^0.28.0",
+    "react-native-experimental-navigation": "https://github.com/EdtechFoundry/react-native-experimental-navigation.git#0.26.10-1.0.0",
     "react-native-tabs": "^1.0.9",
     "react-static-container": "^1.0.1"
   },
