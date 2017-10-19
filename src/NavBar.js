@@ -34,6 +34,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ViewPropTypes,
 } from 'react-native';
 import Actions from './Actions';
 import _drawerImage from './menu_burger.png';
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     ...Platform.select({
       ios: {
-        top: 22,
+        top: 20,
       },
       android: {
         top: 10,
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     ...Platform.select({
       ios: {
-        top: 22,
+        top: 20,
       },
       android: {
         top: 10,
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
         top: 20,
       },
       android: {
-        top: 8,
+        top: 10,
       },
       windows: {
         top: 8,
@@ -174,18 +175,21 @@ const propTypes = {
   wrapBy: PropTypes.any,
   component: PropTypes.any,
   backButtonTextStyle: Text.propTypes.style,
-  leftButtonStyle: View.propTypes.style,
+  leftButtonStyle: ViewPropTypes.style,
+  rightButtonStyle: ViewPropTypes.style,
   leftButtonIconStyle: Image.propTypes.style,
   getTitle: PropTypes.func,
   titleWrapperStyle: Text.propTypes.style,
   titleStyle: Text.propTypes.style,
   titleProps: PropTypes.any,
   position: PropTypes.object,
-  navigationBarStyle: View.propTypes.style,
+  navigationBarStyle: ViewPropTypes.style,
   navigationBarBackgroundImage: Image.propTypes.source,
   navigationBarBackgroundImageStyle: Image.propTypes.style,
   navigationBarTitleImage: Image.propTypes.source,
   navigationBarTitleImageStyle: Image.propTypes.style,
+  navigationBarShowImageSelection: PropTypes.bool,
+  navigationBarSelecionStyle: ViewPropTypes.style,
   renderTitle: PropTypes.any,
 };
 
@@ -496,10 +500,15 @@ class NavBar extends React.Component {
   }
 
   renderImageTitle() {
+    const state = this.props.navigationState;
     const navigationBarTitleImage = this.props.navigationBarTitleImage ||
-      this.state.navigationBarTitleImage;
+      state.navigationBarTitleImage;
     const navigationBarTitleImageStyle = this.props.navigationBarTitleImageStyle ||
-        this.state.navigationBarTitleImageStyle;
+      state.navigationBarTitleImageStyle;
+    const navigationBarShowImageSelection = this.props.navigationBarShowImageSelection ||
+      state.navigationBarShowImageSelection || false;
+    const navigationBarSelecionStyle = this.props.navigationBarSelecionStyle ||
+      state.navigationBarSelecionStyle || {};
     return (
       <Animated.View
         style={[
@@ -511,6 +520,7 @@ class NavBar extends React.Component {
           style={[styles.titleImage, navigationBarTitleImageStyle]}
           source={navigationBarTitleImage}
         />
+        {navigationBarShowImageSelection && <Animated.View style={navigationBarSelecionStyle} />}
       </Animated.View>
     );
   }
@@ -529,8 +539,8 @@ class NavBar extends React.Component {
       return props => <View style={wrapStyle}>{component(props)}</View>;
     };
 
-    const leftButtonStyle = [styles.leftButton, { alignItems: 'flex-start' }];
-    const rightButtonStyle = [styles.rightButton, { alignItems: 'flex-end' }];
+    const leftButtonStyle = [styles.leftButton, { alignItems: 'flex-start' }, this.props.leftButtonStyle, state.leftButtonStyle];
+    const rightButtonStyle = [styles.rightButton, { alignItems: 'flex-end' }, this.props.rightButtonStyle, state.rightButtonStyle];
 
     const renderLeftButton = wrapByStyle(selected.renderLeftButton, leftButtonStyle) ||
       wrapByStyle(selected.component.renderLeftButton, leftButtonStyle) ||

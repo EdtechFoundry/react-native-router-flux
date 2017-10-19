@@ -23,7 +23,7 @@
 | scenes | `object` | optional | scenes for Router created with Actions.create. This will allow to create all actions BEFORE React processing. If you don't need it you may pass Scene root element as children |
 | getSceneStyle | `function` | optional | Optionally override the styles for NavigationCard's Animated.View rendering the scene. |
 | backAndroidHandler | `function` | optional | Optionally override the handler for `BackHandler`, return `true` to stay in the app or return `false` to exit the app. Default handler will pop a scene and exit the app at last when the back key is pressed on Android. |
-| onBackAndroid | `function` | optional | Get called after back key is pressed and a scene is poped, won't affect the default behavior. |
+| onBackAndroid | `function` | optional | Get called after back key is pressed and a scene is popped, won't affect the default behavior. |
 | onExitApp | `function` | optional | Optionally override the default action after back key is pressed on root scene. Return `true` to stay, or return `false` to exit the app. |
 
 ## Scene:
@@ -88,7 +88,7 @@ And every `Scene.type` string literal has a mapped constant in ActionConst, it i
 `actionSheet`: shows Action Sheet popup, you must pass callback as callback function.  
 `modal`: type inserts its 'component' into route stack after navigator component. It could be used for popup alerts as well for various needed processes before any navigator transitions (like login auth process). it could be dismissed by using Actions.dismiss().   
 `switch`: is used for tab screens.  
-`reset`: is similar to `replace` except it unmounts the componets in the navigator stack.  
+`reset`: is similar to `replace` except it unmounts the components in the navigator stack.  
 `transitionToTop`: will reset router stack ['route.name'] and with animation, if route has sceneConfig. eg `<Route name="login" schema="modal" component={Login} type="transitionToTop" />`
 
 
@@ -96,7 +96,7 @@ And every `Scene.type` string literal has a mapped constant in ActionConst, it i
 | Property | Type | Default | Description |
 |-----------|--------|---------|--------------------------------------------|
 | duration | `number` | | optional. acts as a shortcut to writing an `applyAnimation` function with `Animated.timing` for a given duration (in ms). |
-| direction | `string` | 'horizontal' | direction of animation horizontal/vertical/leftToRight ('horizontal' will be right to left)|
+| direction | `string` | 'horizontal' | direction of animation horizontal/vertical/leftToRight/topToBottom ('horizontal' will be right to left & 'vertical' will be bottom to top)|
 | animation | `string` | | animation options when transitioning: 'fade' currently only option |
 | animationStyle | `function` | | optional interpolation function for scene transitions: `animationStyle={interpolationFunction}` |
 | applyAnimation | `function` | | optional if provided overrides the default spring animation |
@@ -134,6 +134,8 @@ And every `Scene.type` string literal has a mapped constant in ActionConst, it i
 | navigationBarBackgroundImageStyle | [`Image style`](https://facebook.github.io/react-native/docs/image.html#style) |  | optional style override for the navigation bar background image |
 | navigationBarTitleImage | [`Image source`](https://facebook.github.io/react-native/docs/image.html#source) |  | optional image instead of text title for the navigation bar |
 | navigationBarTitleImageStyle | [`Image style`](https://facebook.github.io/react-native/docs/image.html#style) |  | optional style override for the navigation bar title image |
+| navigationBarShowImageSelection | `bool` | false | hides the selection line inside navigation bar when using navigationBarTitleImage |
+| navigationBarSelecionStyle | [`View style`](https://facebook.github.io/react-native/docs/view.html#style) |  | optional style to add a selection line below navigationBarTitleImage |
 | navBar | `React.Component` | | optional custom NavBar for the scene. Check built-in NavBar of the component for reference |
 | drawerImage | [`Image source`](https://facebook.github.io/react-native/docs/image.html#source) | `require('./menu_burger.png')` | Simple way to override the drawerImage in the navBar |
 
