@@ -10,7 +10,7 @@ import {
   DrawerActions,
 } from 'react-navigation';
 import PropTypes from 'prop-types';
-import { reducer } from './Reducer';
+import createReducer from './Reducer';
 import * as ActionConst from './ActionConst';
 import { OnEnter, OnExit, assert } from './Util';
 import { LeftButton, RightButton, BackButton } from './NavBar';
@@ -497,6 +497,7 @@ class NavigationStore {
 
   setCustomReducer = (Navigator) => {
     this.getStateForAction = Navigator.router.getStateForAction;
+    const reducer = createReducer(this);
     Navigator.router.getStateForAction = (cmd, state) => (this.reducer ? this.reducer(state, cmd) : reducer(state, cmd));
   };
 
