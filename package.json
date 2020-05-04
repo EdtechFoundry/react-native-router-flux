@@ -19,14 +19,17 @@
     "build": "./node_modules/.bin/babel src -d dist",
     "lint": "prettier-eslint src/**/*.js __tests__/**/*.js --list-different",
     "fix": "prettier-eslint src/**/*.js __tests__/**/*.js --write",
-    "test": "jest"
+    "test": "jest",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "lodash.isequal": "4.5.0",
     "opencollective": "^1.0.3",
     "path-to-regexp": "^2.4.0",
     "prop-types": "^15.6.2",
-    "react-navigation": "2.x"
+    "react-navigation": "2.x",
+    "snyk": "^1.317.0"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.47",
@@ -81,5 +84,6 @@
     "type": "opencollective",
     "url": "https://opencollective.com/react-native-router-flux",
     "logo": "https://opencollective.com/opencollective/logo.txt"
-  }
+  },
+  "snyk": true
 }
